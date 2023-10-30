@@ -1,0 +1,14 @@
+# NB: script for managing multiple Docker containers as a group.
+# especially useful when your application needs more than one container,
+# such as a web server, a db, and other services.
+# It defines services, each with its own configuration, like which Docker image 
+# to use, which ports to expose, and how the containers should interact.
+
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+#    ports:
+#      - "5000:5000"  # for mapping ports

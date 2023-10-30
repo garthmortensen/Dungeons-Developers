@@ -1,0 +1,29 @@
+# first time setup
+1. mkdir for project
+1. git init
+1. python -m venv .venv
+1. .\.venv\Scripts\activate
+1. pip install flask
+1. pip freeze > requirements.txt
+1. touch app.py, add basic content
+1. docker init
+  creates sensible settings for:
+  - .dockerignore
+  - Dockerfile
+  - compose.yaml
+1. build the docker image using the dockerfile, and compose
+  - docker build -t my_image_name:latest .
+  This line above and all following can be skipped in one step:
+  - docker compose up --build
+1. follow either path:
+  1. run the docker container and test the app:
+  docker run -p 5000:5000 -d my_image_name
+  1. use compose to launch container:
+  docker compose up
+1. browse to localhost:5000
+
+In simple terms:
+1. Dockerfile helps you build a single container for your application. 
+1. compose.yml helps you manage a collection of containers, making it easy to run your entire application stack.
+
+It's like using a recipe to cook a single dish (Dockerfile) or a menu to serve a full meal (docker-compose.yml).

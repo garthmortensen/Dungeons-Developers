@@ -1,0 +1,22 @@
+# Use the Red Hat UBI 8 Minimal image as the base image
+FROM redhat/ubi8-minimal:latest
+
+# install python and dependencies
+RUN microdnf install python38 --nodocs
+
+# copy the requirements file into the image
+COPY ./requirements.txt /app/requirements.txt
+
+# switch working directory
+WORKDIR /app
+
+# install the dependencies and packages in the requirements file
+RUN python3 -m pip install -r requirements.txt
+
+# copy content from local files to the image
+COPY . /app
+
+# configure the container to run in an executed manner
+ENTRYPOINT [ "python" ]
+
+CMD ["app.py" ]
